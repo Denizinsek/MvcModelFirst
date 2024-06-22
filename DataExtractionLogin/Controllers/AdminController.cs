@@ -14,7 +14,31 @@ namespace DataExtractionLogin.Controllers
         MvcModelFirstEntities db = new MvcModelFirstEntities();
         // GET: Admin
 
-        
+        // Admin login page
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Users users)
+        {
+            var login = from x in db.Users
+                        where x.UserName == users.UserName && x.Password == users.Password
+                        select x;
+
+            if (login.Count() > 0)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
+            return View();
+        }
+
         // Admin index page
         public ActionResult Index()
         {
