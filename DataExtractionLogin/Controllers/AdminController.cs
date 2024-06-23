@@ -1,10 +1,6 @@
 ﻿using DataExtractionLogin.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DataExtractionLogin.Controllers
@@ -53,7 +49,6 @@ namespace DataExtractionLogin.Controllers
         }
 
         // User Save
-
         public ActionResult Save()
         {
             return View();
@@ -68,7 +63,6 @@ namespace DataExtractionLogin.Controllers
         }
 
         // User update
-
         public ActionResult Update(int id)
         {
             var update = db.Users.Where(x => x.Id == id).FirstOrDefault();
@@ -83,7 +77,6 @@ namespace DataExtractionLogin.Controllers
         }
 
         // User Delete
-
         public ActionResult Delete(int id)
         {
             var delete = db.Users.Where(x => x.Id == id).FirstOrDefault();
@@ -91,7 +84,5 @@ namespace DataExtractionLogin.Controllers
             db.SaveChanges();
             return RedirectToAction("Users");
         }
-
-
     }
 }
